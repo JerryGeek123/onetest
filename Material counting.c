@@ -21,10 +21,10 @@ sbit Led_P    = P1^0;			// LED报警灯
 sbit Left_P   = P3^0;			// 左边的红外传感器
 sbit Right_P  = P3^1;			// 右边的红外传感器
 
-uint Alarm;		// 饱和警戒数量
-uint input=0;	// 物料进入数量									
-uint out=0;		// 物料出去数量
-uint Now=0;		// 当前物料存留数量
+uint Alarm;         // 饱和警戒数量
+uint input=0;	    // 物料进入数量									
+uint out=0;	    // 物料出去数量
+uint Now=0;	    // 当前物料存留数量
 
 
 /*********************************************************/
