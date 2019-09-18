@@ -187,9 +187,9 @@ void LcdPrintNum(uint num)
 /*********************************************************/
 void LcdShowInit()
 {
-	LcdGotoXY(0,0);											// 液晶光标定位到第0行
+	LcdGotoXY(0,0);										// 液晶光标定位到第0行
 	LcdPrintStr("IN:0000 OUT:0000");		// 液晶第0行显示"IN:0000  OUT:0000"
-	LcdGotoXY(1,0);											// 液晶光标定位到第1行
+	LcdGotoXY(1,0);										// 液晶光标定位到第1行
 	LcdPrintStr("RM:0000 ALM:    ");		// 液晶第1行显示"RM:0000  ALM:    "
 }
 
@@ -200,11 +200,11 @@ void LcdShowInit()
 /*********************************************************/
 void KeyScanf()
 {
-	if(Subkey==0)												// 如果减按键被按下	
+	if(Subkey==0)								// 如果减按键被按下	
 	{
-		if(Alarm>1)											// 只有Alarm大于1才能减1								
+		if(Alarm>1)							 // 只有Alarm大于1才能减1								
 			Alarm--;				
-		LcdGotoXY(1,12);									// 液晶光标定位到第1行第11列
+		LcdGotoXY(1,12);						  // 液晶光标定位到第1行第11列
 		LcdPrintNum(Alarm);							// 刷新改变后的报警值
 		DelayMs(250);											// 延时一下
 		Sector_Erase(0x2000);							// 存入EEPROM前先擦除
@@ -212,11 +212,11 @@ void KeyScanf()
 		EEPROM_Write(0x2001,Alarm%100);
 	}
 	
-	if(Addkey==0)												// 如果加按键被按下	
+	if(Addkey==0)								// 如果加按键被按下	
 	{
-		if(Alarm<9999)										// 只有Alarm小于9999才能加1
+		if(Alarm<9999)								// 只有Alarm小于9999才能加1
 			Alarm++;				
-		LcdGotoXY(1,12);									// 液晶光标定位到第1行第11列
+		LcdGotoXY(1,12);						// 液晶光标定位到第1行第11列
 		LcdPrintNum(Alarm);							// 刷新改变后的报警值
 		DelayMs(250);											// 延时一下
 		Sector_Erase(0x2000);							// 存入EEPROM前先擦除
@@ -253,7 +253,7 @@ void main(void)
 	LcdShowInit();							// 液晶显示内容初始化  两步初始化
 	
 	Alarm=EEPROM_Read(0x2000)*100+EEPROM_Read(0x2001);			// 从EEPROM中读取报警值
-	if((Alarm==0)||(Alarm>9999))										// 如果读出来数据异常，则重新赋值20
+	if((Alarm==0)||(Alarm>9999))							// 如果读出来数据异常，则重新赋值20
 		Alarm=20;
 	
 	LcdGotoXY(1,12);						// 液晶光标定位到第1行第11列
@@ -265,7 +265,7 @@ void main(void)
 		{
 			if(input<9999)						// 判断当前物料进入数量是否小于9999
 			{
-				input++;								// 进入数量加1
+				input++;						// 进入数量加1
 				LcdGotoXY(0,3);				// 光标定位
 				LcdPrintNum(input);		// 显示物料进入数量
 				LcdGotoXY(1,3);				// 光标定位
